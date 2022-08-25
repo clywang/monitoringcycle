@@ -1,0 +1,159 @@
+"'ReportScreen_1(new)' As screen":
+
+    LblAppName2_2 As label:
+        Align: =Align.Center
+        DisabledColor: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =185
+        Size: =50
+        Text: ="Report Screen"
+        Width: =640
+        Wrap: =false
+        ZIndex: =4
+
+    Label6_1 As label:
+        Height: =70
+        Size: =21
+        Text: ="Select a participant"
+        Width: =560
+        X: =32
+        Y: =265
+        ZIndex: =5
+
+    Label8_1 As label:
+        Height: =70
+        Size: =21
+        Text: ="Select a short term goal"
+        Width: =560
+        X: =32
+        Y: =643
+        ZIndex: =6
+
+    Label9_1 As label:
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Select a weekly task
+            "
+        Width: =560
+        X: =32
+        Y: =833
+        ZIndex: =7
+
+    Dropdown6_1 As dropdown:
+        AllowEmptySelection: =true
+        Default: =
+        FontWeight: =FontWeight.Lighter
+        Height: =70
+        Items: |-
+            =[
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term education goal ?  eg. graduation, accomplishing a degree/program/license.'
+                ).'What is your long term education goal ?  eg. graduation, accomplishing a degree/program/license.',
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term career goal?  eg. promotion at your current job, getting a full-time job in your desired career goal. '
+                ).'What is your long term career goal?  eg. promotion at your current job, getting a full-time job in your desired career goal. ',
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term financial goal?  eg. save up 15% of your total income, being financially independent. '
+                ).'What is your long term financial goal?  eg. save up 15% of your total income, being financially independent. ',
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term health goal?  eg. recovering from an injury, having a healthier diet'
+                ).'What is your long term health goal?  eg. recovering from an injury, having a healthier diet',
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term family/friends/relationship goal ? eg. reconnecting with family members, makes good friends'
+                ).'What is your long term family/friends/relationship goal ? eg. reconnecting with family members, makes good friends',
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term accountability goal? eg. being punctual for your school/work'
+                ).'What is your long term accountability goal? eg. being punctual for your school/work',
+                First(
+                    Filter(
+                        LongTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'What is your long term personal goal?  eg. new hobbies, new language, building confidence'
+                ).'What is your long term personal goal?  eg. new hobbies, new language, building confidence'
+            ]
+        OnChange: =true
+        OnSelect: =true
+        Size: =21
+        Width: =575
+        X: =32
+        Y: =515
+        ZIndex: =8
+
+    Label8_2 As label:
+        Height: =70
+        Size: =21
+        Text: ="Select a long term goal"
+        Width: =560
+        X: =32
+        Y: =442
+        ZIndex: =9
+
+    Dropdown6_3 As dropdown:
+        AllowEmptySelection: =true
+        Default: =
+        FontWeight: =FontWeight.Lighter
+        Height: =70
+        Items: |
+            =Filter(
+                        ShortTermGoals,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'Write down your short term goal.  This should be a specific, measurable, attainable, relevant, and time-bound for the upcoming month.'
+        OnChange: =true
+        OnSelect: =true
+        Size: =21
+        Width: =575
+        X: =32
+        Y: =713
+        ZIndex: =11
+
+    ComboBox1_3 As combobox:
+        DisplayFields: =Sort(["Title"], Descending)
+        Height: =70
+        IsSearchable: =false
+        Items: =ParticipantsList
+        SearchFields: =["Title"]
+        SearchItems: =[]
+        SelectMultiple: =false
+        Size: =21
+        Width: =575
+        X: =32
+        Y: =336
+        ZIndex: =12
+
+    Dropdown6_4 As dropdown:
+        AllowEmptySelection: =true
+        Default: =
+        FontWeight: =FontWeight.Lighter
+        Height: =70
+        Items: |
+            =Filter(
+                        WeeklyTasks,
+                        Title=ComboBox1_3.Selected.Title
+                    ).'Task To Do'
+        OnChange: =true
+        OnSelect: =true
+        Size: =21
+        Width: =575
+        X: =32
+        Y: =903
+        ZIndex: =13
+

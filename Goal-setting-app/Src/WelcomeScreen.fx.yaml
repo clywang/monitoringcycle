@@ -1,0 +1,42 @@
+WelcomeScreen As screen:
+    BackgroundImage: =AH
+    Fill: =RGBA(255, 255, 255, 1)
+    OnVisible: =
+
+    GetStartedButton As button:
+        BorderColor: =Color.LightBlue
+        BorderThickness: =0
+        Color: =RGBA(153, 207, 236, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.Arial
+        FontWeight: =FontWeight.Bold
+        Height: =100
+        HoverFill: =Color.LightBlue
+        OnSelect: |-
+            =Navigate('Login Page',ScreenTransition.Cover);
+            Set(varInvalidDetails,false)
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Size: =50
+        Text: ="➤"
+        Width: =100
+        X: =260
+        Y: =936
+        ZIndex: =1
+
+    QuotesLabel As label:
+        Align: =Align.Center
+        Height: =71
+        Size: =20
+        Text: ="Be the change you want to see in the world."
+        Width: =572
+        X: =39
+        Y: =117
+        ZIndex: =2
+

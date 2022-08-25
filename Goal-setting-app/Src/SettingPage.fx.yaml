@@ -1,0 +1,181 @@
+SettingPage As screen:
+
+    Label4 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =110
+        Size: =35
+        Text: ="         Settings"
+        Width: =640
+        ZIndex: =1
+
+    BackButton2_2 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.CoverRight);
+        X: =25
+        Y: =23
+        ZIndex: =2
+
+    Label5 As label:
+        Color: =RGBA(153, 153, 153, 1)
+        Height: =65
+        OnSelect: =Set(varChangePass,true)
+        Size: =25
+        Text: ="      Change Password"
+        Width: =640
+        Y: =195
+        ZIndex: =3
+
+    Label5_1 As label:
+        Color: =RGBA(153, 153, 153, 1)
+        Height: =65
+        Size: =25
+        Text: ="      How to use the app"
+        Width: =640
+        Y: =260
+        ZIndex: =4
+
+    Label5_2 As label:
+        Color: =RGBA(153, 153, 153, 1)
+        Height: =65
+        Size: =25
+        Text: ="      About Us"
+        Width: =640
+        Y: =325
+        ZIndex: =5
+
+    Label5_3 As label:
+        Color: =RGBA(153, 153, 153, 1)
+        Height: =65
+        HoverBorderColor: =
+        HoverColor: =Color.White
+        HoverFill: =RGBA(153, 207, 236, 1)
+        OnSelect: =Exit()
+        Size: =25
+        Text: ="      Logout"
+        Width: =640
+        Y: =390
+        ZIndex: =6
+
+    Container3 As groupContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =883
+        Visible: =varChangePass
+        Width: =640
+        Y: =110
+        ZIndex: =8
+
+        OldPassLabel As label:
+            Color: =RGBA(153, 153, 153, 1)
+            Height: =70
+            Size: =21
+            Text: |-
+                ="Enter Old Password:"
+            Width: =560
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        OldPass As text:
+            Default: =""
+            Height: =70
+            Mode: =TextMode.Password
+            Size: =21
+            Width: =560
+            X: =40
+            Y: =110
+            ZIndex: =2
+
+        NewPassLabel As label:
+            Color: =RGBA(153, 153, 153, 1)
+            Height: =70
+            Size: =21
+            Text: |-
+                ="Enter New Password:"
+            Width: =560
+            X: =40
+            Y: =205
+            ZIndex: =3
+
+        NewPass As text:
+            Default: =""
+            Height: =70
+            Mode: =TextMode.Password
+            Size: =21
+            Width: =560
+            X: =40
+            Y: =275
+            ZIndex: =4
+
+        AgainPassLabel As label:
+            Color: =RGBA(153, 153, 153, 1)
+            Height: =70
+            Size: =21
+            Text: |-
+                ="Enter New Password Again:"
+            Width: =560
+            X: =40
+            Y: =384
+            ZIndex: =5
+
+        AgainPass As text:
+            Default: =""
+            Height: =70
+            Mode: =TextMode.Password
+            Size: =21
+            Width: =560
+            X: =40
+            Y: =454
+            ZIndex: =6
+
+        ChangePassword As button:
+            Fill: =RGBA(153, 207, 236, 1)
+            Height: =70
+            OnSelect: |-
+                =If(IsBlank(OldPass) Or IsBlank(NewPass) Or IsBlank(AgainPass),Reset(OldPass) And Reset(NewPass) And Reset(AgainPass));
+                If(
+                    CountRows(
+                        Filter(
+                            Credentials,
+                            EmailId = User().Email 
+                            && 
+                            Password = OldPass.Text)) = 1 And NewPass.Text = AgainPass.Text,
+                                    If(
+                                        IsEmpty(
+                                            Errors(
+                                                Credentials,
+                                                Patch(
+                                        Credentials,First(Filter(Credentials, EmailId = User().Email)),
+                                        {Title: User().FullName,
+                                         Password: NewPass.Text}))),
+                                         Notify("Password changed successfully.",NotificationType.Success,1000)
+                                    ),
+                                    Reset(OldPass) And Reset(NewPass) And Reset(AgainPass)
+                    );
+                Reset(OldPass);
+                Reset(NewPass);
+                Reset(AgainPass);
+                Set(varChangePass,false)
+            Size: =24
+            Text: ="Change Password"
+            Width: =560
+            X: =40
+            Y: =563
+            ZIndex: =7
+
+        "'Cancel Pass' As button":
+            Fill: =RGBA(153, 207, 236, 1)
+            Height: =70
+            OnSelect: |-
+                =Reset(OldPass);
+                Reset(NewPass);
+                Reset(AgainPass);
+                Set(varChangePass,false)
+            Size: =24
+            Text: ="Cancel"
+            Width: =560
+            X: =40
+            Y: =667
+            ZIndex: =8
+

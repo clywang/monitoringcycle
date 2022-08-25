@@ -1,0 +1,503 @@
+"CalendarScrollablePage As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+
+    RectQuickActionBar5 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName5 As label:
+        Align: =Align.Center
+        Height: =61
+        Size: =27
+        Text: ="Calendar"
+        Width: =Parent.Width
+        Y: =15
+        ZIndex: =2
+
+    Canvas1 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Fill: =RGBA(204, 231, 246, 1)
+        Height: =1048
+        Width: =Parent.Width
+        Y: =RectQuickActionBar5.Y + RectQuickActionBar5.Height
+        ZIndex: =3
+
+        DataCard4 As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =220
+            Width: =640
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+            CalendarWeekView_1 As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =-293
+                ZIndex: =3
+
+                "DailyTasksGallery_1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+                    BorderColor: =RGBA(255, 255, 255, 1)
+                    Fill: =White
+                    Height: =56
+                    Items: |-
+                        =
+                        Sequence(7)
+                        
+                        //Sequence(If(DateDiff(varVideoFirstDayView,DateAdd(varVideoMonth,1,Months),Days)>36,42,35))
+                    Layout: =Layout.Vertical
+                    ShowScrollbar: =false
+                    TemplatePadding: =0
+                    TemplateSize: =99
+                    WrapCount: =7
+                    Y: =100
+                    ZIndex: =1
+
+                    "Gallery1_1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+                        BorderThickness: =1
+                        Height: =99
+                        Items: =Filter(colVideoEvents, Date = DateValue(CurrentDate_1.Text) And Email = varParticipantEmail )
+                        Layout: =Layout.Vertical
+                        TemplatePadding: =0
+                        TemplateSize: =Min(96, Self.Height - 60)
+                        Width: =91.42857142857143
+                        ZIndex: =1
+
+                        Title2_1 As label:
+                            Align: =Align.Center
+                            Height: =39
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =10
+                            Size: =12
+                            Text: =ThisItem.
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =87
+                            X: =4
+                            ZIndex: =1
+
+                    CurrentDate_1 As label:
+                        BorderThickness: =1
+                        Color: =RGBA(0, 13, 75, 1)
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        Fill: |
+                            =If(DateValue(Self.Text) = Today(), ColorValue("#E01483"), If(Month(DateValue(Self.Text)) = Month(Today()), White, Blue))
+                        FontWeight: =FontWeight.Bold
+                        Height: =66
+                        OnSelect: |
+                            =Select(Parent);
+                            Set(varCurrDay, DateAdd(varFirstWeek,ThisItem.Value,Days))
+                        Size: =11.5
+                        Text: |
+                            =
+                            DateAdd(varFirstWeek,ThisItem.Value,Days)
+                        Width: =91.42857142857143
+                        ZIndex: =2
+
+                "WeekDaysGallery_1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+                    BorderStyle: =BorderStyle.None
+                    Fill: =RGBA(224, 20, 131, 1)
+                    Height: =58
+                    Items: |
+                        =Calendar.WeekdaysLong()
+                    Layout: =Layout.Vertical
+                    TemplatePadding: |+
+                        =0
+                        
+                    TemplateSize: |
+                        =50
+                    WrapCount: =7
+                    Y: =48
+                    ZIndex: =2
+
+                    Title3_1 As label:
+                        Align: =Align.Center
+                        Color: =RGBA(255, 255, 255, 1)
+                        Height: =37
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =24
+                        Text: =Left(ThisItem.Value,3)
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =91
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                        ZIndex: =1
+
+            CalendarNavigation As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =7
+
+                BackButton_1 As button:
+                    BorderThickness: =0
+                    Color: =RGBA(153, 207, 236, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =64
+                    OnSelect: |-
+                        =//Set(varVideoMonth,DateAdd(varVideoMonth, -1, Months));
+                        Set(varFirstWeek, DateAdd(varFirstWeek, -7 , Days));
+                        //Set(varVideoFirstDayView,DateAdd(varVideoMonth, -Weekday(varVideoMonth), Days));
+                        //Set(varVideoFirstDayNextMonth, DateAdd(DateAdd(varVideoMonth,1,Months),7-Weekday(DateAdd(varVideoMonth,1,Months)),Days));
+                        
+                        ClearCollect(colVideoEvents, Filter(WeeklyTasks, (Date > varVideoFirstDayView And Date <= varVideoFirstDayNextMonth And Email = varParticipantEmail)));
+                    Size: =20
+                    Text: ="Back"
+                    Width: =122
+                    Y: =161
+                    ZIndex: =3
+
+                NextButton_1 As button:
+                    BorderThickness: =0
+                    Color: =RGBA(153, 207, 236, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =64
+                    OnSelect: |-
+                        =//Set(varVideoMonth,DateAdd(varVideoMonth, 1, Months));
+                        
+                        Set(varFirstWeek, DateAdd(varFirstWeek, 7 , Days));
+                        //Set(varVideoFirstDayView,DateAdd(varVideoMonth, -Weekday(varVideoMonth), Days));
+                        //Set(varVideoFirstDayNextMonth, DateAdd(DateAdd(varVideoMonth,1,Months),7-Weekday(DateAdd(varVideoMonth,1,Months)),Days));
+                        
+                        ClearCollect(colVideoEvents, Filter(WeeklyTasks, (Date > varVideoFirstDayView And Date <= varVideoFirstDayNextMonth And Email = varParticipantEmail)));
+                    Size: =20
+                    Text: ="Next"
+                    Width: =122
+                    X: =518
+                    Y: =161
+                    ZIndex: =5
+
+                TodayButton_1 As button:
+                    BorderThickness: =0
+                    Color: =RGBA(153, 207, 236, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =64
+                    OnSelect: |-
+                        =Set(varFirstWeek,Today() - Weekday(Today()));
+                        Set(varCurrDay, Today() - Weekday(Today()));
+                    Size: =20
+                    Strikethrough: =Set(varFirstWeek,Today()- Weekday(Today()));
+                    Text: ="TODAY"
+                    Width: =130
+                    X: =245
+                    Y: =161
+                    ZIndex: =6
+
+        MorningTasks As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =136
+            Visible: =true
+            Width: =640
+            X: =0
+            Y: =1
+            ZIndex: =3
+
+            MorningTasksLabel_1 As label:
+                Align: =Align.Center
+                Height: =70
+                Size: =25
+                Text: ="Morning Tasks"
+                Width: =560
+                X: =40
+                ZIndex: =1
+
+            "MorningTasksGallery_1 As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+                Height: =101
+                Items: |-
+                    =Filter(
+                        WeeklyTasks,
+                        Time.Value = "Morning",
+                        Date = varCurrDay
+                    )
+                TemplatePadding: =0
+                TemplateSize: =312
+                Y: =85
+                ZIndex: =2
+
+                Rectangle8_2 As rectangle:
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =96
+                    OnSelect: =Select(Parent)
+                    Width: =290
+                    X: =90
+                    ZIndex: =1
+
+                Image7_2 As image:
+                    Height: =66
+                    Image: =morning
+                    OnSelect: =Select(Parent)
+                    Width: =67
+                    X: =238
+                    Y: =3
+                    ZIndex: =4
+
+                Task_Label_2 As label:
+                    FontWeight: =FontWeight.Bold
+                    Height: =96
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: |-
+                        =ThisItem.'Task To Do'
+                        //ThisItem.Time.Value 
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =221
+                    X: =89
+                    ZIndex: =5
+
+                Checkbox1_2 As checkbox:
+                    CheckboxSize: =50
+                    Height: =46
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: ="Done!"
+                    Width: =122
+                    X: =190
+                    Y: =50
+                    ZIndex: =9
+
+        AfternoonTasks As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =165
+            Width: =640
+            X: =0
+            Y: =2
+            ZIndex: =4
+
+            AfternoonTasksLabel_1 As label:
+                Align: =Align.Center
+                Height: =70
+                Size: =25
+                Text: ="Afternoon Tasks"
+                Width: =560
+                X: =30
+                ZIndex: =1
+
+            "AfternoonTasksGallery_1 As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+                Height: =85
+                Items: |-
+                    =Filter(
+                        WeeklyTasks,
+                        Time.Value = "Afternoon",
+                        Date = Today()
+                    )
+                TemplatePadding: =0
+                TemplateSize: =323
+                X: =140
+                Y: =86
+                ZIndex: =2
+
+                Rectangle8_3 As rectangle:
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =85
+                    OnSelect: =Select(Parent)
+                    Width: =284
+                    X: =27
+                    ZIndex: =1
+
+                Image7_3 As image:
+                    Height: =72
+                    Image: =afternoon
+                    OnSelect: =Select(Parent)
+                    Width: =83
+                    X: =127
+                    ZIndex: =4
+
+                Checkbox1_3 As checkbox:
+                    CheckboxSize: =50
+                    Height: =46
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: ="Done!"
+                    Width: =122
+                    X: =27
+                    Y: =39
+                    ZIndex: =9
+
+        DataCard8 As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =117
+            Width: =640
+            X: =0
+            Y: =3
+            ZIndex: =5
+
+            AfternoonTasksLabel_2 As label:
+                Align: =Align.Center
+                Height: =70
+                Size: =25
+                Text: ="Evening Tasks"
+                Width: =560
+                X: =40
+                ZIndex: =1
+
+            "EveningTasksGallery As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+                Height: =143
+                Items: |-
+                    =Filter(
+                        WeeklyTasks,
+                        Time.Value = "Evening",
+                        Date = Today()
+                    )
+                TemplatePadding: =0
+                TemplateSize: =317
+                Y: =70
+                ZIndex: =2
+
+                Rectangle8_4 As rectangle:
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =81
+                    OnSelect: =Select(Parent)
+                    Width: =284
+                    X: =25
+                    ZIndex: =1
+
+                Image7_4 As image:
+                    Height: =64
+                    Image: =evening
+                    OnSelect: =Select(Parent)
+                    Width: =65
+                    X: =134
+                    ZIndex: =4
+
+                Task_Label_4 As label:
+                    FontWeight: =FontWeight.Bold
+                    Height: =64
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: |-
+                        =ThisItem.'Task To Do'
+                        //ThisItem.Time.Value
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =203
+                    X: =41
+                    Y: =3
+                    ZIndex: =5
+
+                Checkbox1_4 As checkbox:
+                    CheckboxSize: =50
+                    Height: =46
+                    OnSelect: =Select(Parent)
+                    Size: =15
+                    Text: ="Done!"
+                    Width: =122
+                    X: =25
+                    Y: =35
+                    ZIndex: =9
+
+                "EveningTasksGallery_1 As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+                    Height: =143
+                    Items: |-
+                        =Filter(
+                            WeeklyTasks,
+                            Time.Value = "Evening",
+                            Date = Today()
+                        )
+                    TemplatePadding: =0
+                    TemplateSize: =317
+                    Width: =317
+                    ZIndex: =10
+
+                    Rectangle8_7 As rectangle:
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =81
+                        OnSelect: =Select(Parent)
+                        Width: =284
+                        X: =25
+                        ZIndex: =1
+
+                    Image7_7 As image:
+                        Height: =64
+                        Image: =evening
+                        OnSelect: =Select(Parent)
+                        Width: =65
+                        X: =134
+                        ZIndex: =4
+
+                    Task_Label_5 As label:
+                        FontWeight: =FontWeight.Bold
+                        Height: =64
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: |-
+                            =ThisItem.'Task To Do'
+                            //ThisItem.Time.Value
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =203
+                        X: =41
+                        Y: =3
+                        ZIndex: =5
+
+                    Checkbox1_6 As checkbox:
+                        CheckboxSize: =50
+                        Height: =46
+                        OnSelect: =Select(Parent)
+                        Size: =15
+                        Text: ="Done!"
+                        Width: =122
+                        X: =25
+                        Y: =35
+                        ZIndex: =9
+
+    PageBackButton_1 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.CoverRight);
+        Width: =48
+        X: =19
+        Y: =12
+        ZIndex: =4
+
+    GoalsButton_1 As button:
+        Fill: =RGBA(224, 20, 131, 1)
+        Height: =64
+        OnSelect: =Navigate(GoalSetting)
+        RadiusBottomLeft: =360
+        RadiusBottomRight: =360
+        RadiusTopLeft: =360
+        RadiusTopRight: =360
+        Size: =18
+        Text: ="Goals"
+        Width: =116
+        X: =506
+        Y: =12
+        ZIndex: =5
+
+    MonthLabel_1 As label:
+        Color: =RGBA(50, 86, 160, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =63
+        Size: =20
+        Text: =Text(varFirstWeek,"mmmm")
+        Width: =325
+        X: =285
+        Y: =76
+        ZIndex: =6
+

@@ -1,0 +1,189 @@
+"'Login Page' As screen":
+    Fill: =RGBA(255, 255, 255, 1)
+
+    Email_Id As text:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Default: =User().Email
+        Height: =78
+        HintText: ="Email Address"
+        HoverBorderColor: =RGBA(153, 153, 153, 1)
+        HoverFill: =RGBA(255, 255, 255, 1)
+        PaddingLeft: =70
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Size: =21
+        Width: =533
+        X: =57
+        Y: =522
+        ZIndex: =1
+
+    UserLabel As label:
+        Color: =RGBA(128, 128, 128, 1)
+        FontWeight: =FontWeight.Lighter
+        Height: =70
+        Size: =21
+        Text: ="Email Id"
+        Width: =457
+        X: =89
+        Y: =452
+        ZIndex: =2
+
+    PassLabel As label:
+        Color: =RGBA(128, 128, 128, 1)
+        FontWeight: =FontWeight.Lighter
+        Height: =70
+        Size: =21
+        Text: ="Password"
+        Width: =457
+        X: =89
+        Y: =600
+        ZIndex: =3
+
+    PassWord As text:
+        AccessibleLabel: ="Password"
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Default: |
+            =
+        Height: =78
+        HintText: ="Password"
+        HoverBorderColor: =RGBA(153, 153, 153, 1)
+        HoverFill: =RGBA(255, 255, 255, 1)
+        Mode: =If('Hide/Show'.Pressed, TextMode.SingleLine, TextMode.Password)
+        PaddingLeft: =70
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Size: =21
+        Width: =533
+        X: =57
+        Y: =688
+        ZIndex: =4
+
+    LoginButton As button:
+        BorderThickness: =0
+        Fill: =RGBA(153, 207, 236, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        HoverColor: =RGBA(153, 207, 236, 1)
+        HoverFill: =Color.White
+        OnSelect: |-
+            =If(
+                CountRows(
+                    Filter(
+                        Credentials,
+                            EmailId = Email_Id.Text &&
+                            Password = PassWord.Text &&
+                            UserType = "Participant"
+                    )
+                ) = 1,
+                Navigate(
+                    Homepage_participant,
+                    None
+                )
+            );
+            If(
+                CountRows(
+                    Filter(
+                        Credentials,
+                            EmailId = Email_Id.Text &&
+                            Password = PassWord.Text &&
+                            UserType = "Staff"
+                    )
+                ) = 1,
+                Navigate(
+                    Homepage_staff,
+                    None
+                )
+            );
+            If(
+                CountRows(
+                    Filter(
+                        Credentials,
+                            EmailId = Email_Id.Text &&
+                            Password = PassWord.Text
+                    )
+                ) = 0,
+                Notify("Wrong Email Id or Password.",NotificationType.Error,1000)
+            );
+            Reset(Email_Id);
+            Reset(PassWord);
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Size: =24
+        Text: ="Login"
+        Width: =533
+        X: =57
+        Y: =855
+        ZIndex: =5
+
+    PassShow As icon.View:
+        Color: =RGBA(153, 153, 153, 1)
+        Height: =40
+        Icon: =Icon.View
+        OnSelect: =
+        Visible: =If('Hide/Show'.Pressed,true,false)
+        Width: =40
+        X: =529
+        Y: =689
+        ZIndex: =6
+
+    UserIcon As icon.Person:
+        Color: =RGBA(128, 128, 128, 1)
+        Height: =40
+        Icon: =Icon.Person
+        Width: =40
+        X: =73
+        Y: =541
+        ZIndex: =7
+
+    PassHide As icon.Hide:
+        Color: =RGBA(153, 153, 153, 1)
+        Height: =40
+        Icon: =Icon.Hide
+        OnSelect: =
+        Visible: =If('Hide/Show'.Pressed, false,true)
+        Width: =40
+        X: =529
+        Y: =707
+        ZIndex: =8
+
+    PassIcon As icon.Lock:
+        Color: =RGBA(128, 128, 128, 1)
+        Height: =40
+        Icon: =Icon.Lock
+        Width: =40
+        X: =73
+        Y: =707
+        ZIndex: =9
+
+    "'Hide/Show' As button":
+        BorderThickness: =0
+        Color: =RGBA(153, 153, 153, 1)
+        Fill: =RGBA(56, 96, 178, 0.01)
+        HoverColor: =RGBA(255, 255, 255, 0.01)
+        HoverFill: =RGBA(255, 255, 255, 0.01)
+        PressedBorderColor: =
+        PressedFill: =
+        Size: =24
+        Text: =""
+        Width: =40
+        X: =529
+        Y: =689
+        ZIndex: =10
+
+    LoginLabel As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =30
+        Text: ="LOGIN"
+        Width: =560
+        X: =37
+        Y: =195
+        ZIndex: =12
+

@@ -1,0 +1,145 @@
+{
+  "6f7568eb-c5d5-4bf5-9891-9da12956e82e": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1587/1.0.1587.2924/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "6f7568eb-c5d5-4bf5-9891-9da12956e82e"
+  },
+  "7d7393a0-9eff-4a37-9b97-3b60510b3414": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://thethaddeusfoundation.sharepoint.com/sites/AGAPEHouse_nJU": {
+        "dataSources": {
+          "ParticipantsList": {
+            "tableName": "5576a270-717c-4d0a-a512-a8cc7eb19335"
+          },
+          "ShortTermGoals": {
+            "tableName": "e8f6dec2-abef-4982-bf94-a44387c6f658"
+          },
+          "WeeklyGoals": {
+            "tableName": "93ee600c-beda-44fe-980c-942178e92b37"
+          },
+          "WeeklyTasks": {
+            "tableName": "1855ff72-8fa4-437e-b6fd-c85b31c6dbec"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "ShortTermGoals",
+      "WeeklyGoals",
+      "ParticipantsList",
+      "WeeklyTasks",
+      "Credentials",
+      "LongTermGoals",
+      "WeeklyTasks_1"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "7d7393a0-9eff-4a37-9b97-3b60510b3414"
+  },
+  "846943ae-6415-4de6-b727-1833ce77c49e": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://thethaddeusfoundation.sharepoint.com/sites/AGAPEHouse_nJU": {
+        "dataSources": {
+          "Credentials": {
+            "tableName": "91894757-10e3-4204-b872-a919c9104a19"
+          },
+          "LongTermGoals": {
+            "tableName": "86e36a70-180c-43e5-b593-3b846b719563"
+          },
+          "WeeklyTasks_1": {
+            "tableName": "1855ff72-8fa4-437e-b6fd-c85b31c6dbec"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Credentials",
+      "LongTermGoals",
+      "WeeklyTasks_1",
+      "ShortTermGoals",
+      "WeeklyGoals",
+      "ParticipantsList",
+      "WeeklyTasks"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "846943ae-6415-4de6-b727-1833ce77c49e"
+  },
+  "8dbe460d-1018-427d-aa05-fac30f725b10": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Groups",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1588/1.0.1588.2938/office365groups/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365groups",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Groups"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "8dbe460d-1018-427d-aa05-fac30f725b10"
+  },
+  "9adb121c-4126-41ff-82a0-20f06f602a35": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "9adb121c-4126-41ff-82a0-20f06f602a35"
+  }
+}

@@ -1,0 +1,95 @@
+Homepage_staff As screen:
+    OnVisible: =Set(StartTimer,true);
+
+    TrackProgressButton_2 As button:
+        BorderColor: =RGBA(153, 207, 236, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =RGBA(153, 207, 236, 1)
+        HoverFill: =Self.Color
+        OnSelect: |-
+            =Set(varAddParticipant,false);
+            Navigate(ParticipantPage,ScreenTransition.Fade)
+        Size: =24
+        Text: ="Participants"
+        Width: =600
+        X: =20
+        Y: =544
+        ZIndex: =2
+
+    CalenderButton_3 As button:
+        BorderColor: =RGBA(153, 207, 236, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =RGBA(153, 207, 236, 1)
+        HoverFill: =Self.Color
+        OnSelect: =Navigate(CalendarPage)
+        Size: =24
+        Text: ="Calendar"
+        Width: =600
+        X: =24
+        Y: =710
+        ZIndex: =3
+
+    Background_1 As label:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =458
+        Size: =21
+        Text: =""
+        Width: =640
+        ZIndex: =4
+
+    UserImage_1 As image:
+        Height: =200
+        Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto,Office365Users.UserPhotoV2(User().Email),SampleImage)
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Width: =200
+        X: =220
+        Y: =97
+        ZIndex: =5
+
+    UserName_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =70
+        Size: =30
+        Text: =Concatenate("Hi! ", First(Split(User().FullName," ")).Result)
+        Width: =560
+        X: =50
+        Y: =348
+        ZIndex: =6
+
+    InfoIcon_3 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(179, 179, 179, 1)
+        Icon: =Icon.Information
+        OnSelect: =Navigate(InformationPage,ScreenTransition.Cover)
+        X: =480
+        Y: =17
+        ZIndex: =7
+
+    Icon3_1 As icon.Settings:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Settings
+        OnSelect: =Navigate(SettingPage,ScreenTransition.Fade)
+        X: =560
+        Y: =17
+        ZIndex: =8
+
+    ReportButton As button:
+        BorderColor: =RGBA(153, 207, 236, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =RGBA(153, 207, 236, 1)
+        HoverFill: =Self.Color
+        OnSelect: =Navigate('ReportScreen_1(new)')
+        Size: =24
+        Text: ="Report"
+        Width: =600
+        X: =20
+        Y: =867
+        ZIndex: =9
+

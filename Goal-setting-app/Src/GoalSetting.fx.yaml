@@ -1,0 +1,73 @@
+GoalSetting As screen:
+
+    LongTermButton As button:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =Self.Fill
+        HoverFill: =Self.Color
+        OnSelect: =Navigate(LongTermForm,ScreenTransition.Fade)
+        Size: =35
+        Text: ="Long Term"
+        Width: =560
+        X: =40
+        Y: =189
+        ZIndex: =2
+
+    ShortTermButton As button:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =Self.Fill
+        HoverFill: =Self.Color
+        OnSelect: =Navigate(ShortTermForm,ScreenTransition.Fade)
+        Size: =35
+        Text: ="Short Term"
+        Width: =560
+        X: =40
+        Y: =381
+        ZIndex: =3
+
+    WeeklyButton As button:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =Self.Fill
+        HoverFill: =Self.Color
+        OnSelect: =Navigate(WeeklyForm,ScreenTransition.Fade)
+        Size: =35
+        Text: ="Weekly Survey"
+        Width: =560
+        X: =40
+        Y: =565
+        ZIndex: =4
+
+    Label1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =110
+        Size: =35
+        Text: ="Set your Goals"
+        Width: =640
+        ZIndex: =5
+
+    BackButton2_1 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.CoverRight);
+        X: =39
+        Y: =23
+        ZIndex: =6
+
+    WeeklyButton_1 As button:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =122
+        HoverColor: =Self.Fill
+        HoverFill: =Self.Color
+        OnSelect: =Navigate(SetWeeklyTasks,ScreenTransition.Fade)
+        Size: =35
+        Text: ="Weekly Tasks"
+        Width: =560
+        X: =40
+        Y: =755
+        ZIndex: =7
+

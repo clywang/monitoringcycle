@@ -1,0 +1,487 @@
+ShortTermForm_view As screen:
+
+    RectQuickActionBar4_5 As rectangle:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =110
+        Width: =640
+        ZIndex: =1
+
+    BackButton2_8 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.CoverRight);
+        X: =25
+        Y: =23
+        ZIndex: =2
+
+    Icon1_1 As icon.Edit:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Edit
+        OnSelect: |-
+            =Navigate(ShortTermForm);
+            Set(varFormMode,FormMode.Edit)
+        X: =548
+        Y: =23
+        ZIndex: =3
+
+    FormViewer2_1 As formViewer:
+        AcceptsFocus: =false
+        DataSource: =ShortTermGoals
+        Height: =888
+        Item: =First(Filter(ShortTermGoals, And(Dropdown1.Selected.Value = 'What type of goal is it?'.Value, Email = varParticipantEmail)))
+        Width: =640
+        Y: =248
+        ZIndex: =4
+
+        "'What is your short term goal?_DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="What_x0020_is_x0020_your_x0020_l"
+            Default: =ThisItem.'What is your long term goal?'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term goal?"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =148
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey57 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue57 As label:
+                DisplayMode: =Parent.DisplayMode
+                Height: =71
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey57.Y + DataCardKey57.Height + 5
+                ZIndex: =2
+
+        "'What type of goal is it?_DataCard2' As typedDataCard.comboBoxViewCard":
+            BorderStyle: =BorderStyle.Solid
+            ContentLanguage: =""
+            DataField: ="What_x0020_type_x0020_of_x0020_g"
+            Default: =ThisItem.'What type of goal is it?'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What type of goal is it?"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =66
+            Required: =false
+            Update: =DataCardValue58.Selected
+            Width: =640
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey58 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue58 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                Items: =Filter(Choices([@ShortTermGoals].'What type of goal is it?'), Value = Dropdown1.Selected.Value)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Search(Filter(Choices([@ShortTermGoals].'What type of goal is it?'), Value = Dropdown1.Selected.Value),DataCardValue58.SearchText,"Value")
+                SelectMultiple: =false
+                Size: =21
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey58.Y + DataCardKey58.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue58.Y + DataCardValue58.Height
+                ZIndex: =3
+
+            StarVisible4 As label:
+                Align: =Align.Center
+                Height: =DataCardKey58.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey58.Y
+                ZIndex: =4
+
+        "'Write down your short term goal.  This should be a specific, measurable, attainable, relevant, and time-bound for the upcoming month._DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Write_x0020_down_x0020_your_x002"
+            Default: =ThisItem.'Write down your short term goal.  This should be a specific, measurable, attainable, relevant, and time-bound for the upcoming month.'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="Write down your short term goal.  This should be a specific, measurable, attainable, relevant, and time-bound for the upcoming month."
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey59 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue59 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey59.Y + DataCardKey59.Height + 5
+                ZIndex: =2
+
+        "'How can you measure to see if you are achieving your short term goal?  Think of what changes you will see as you make progress. Some changes might be measurable in numbers._DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="How_x0020_can_x0020_you_x0020_me"
+            Default: =ThisItem.'How can you measure to see if you are achieving your short term goal?  Think of what changes you will see as you make progress. Some changes might be measurable in numbers.'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="How can you measure to see if you are achieving your short term goal?  Think of what changes you will see as you make progress. Some changes might be measurable in numbers."
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey60 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue60 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey60.Y + DataCardKey60.Height + 5
+                ZIndex: =2
+
+        "'How often do you measure your short term goal?_DataCard2' As typedDataCard.comboBoxViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="How_x0020_often_x0020_do_x0020_y"
+            Default: =ThisItem.'How often do you measure your short term goal?'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="How often do you measure your short term goal?"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue61.Selected
+            Width: =640
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey61 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue61 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                Items: =Choices([@ShortTermGoals].'How often do you measure your short term goal?')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices(ShortTermGoals.'How often do you measure your short term goal?',DataCardValue61.SearchText)
+                SelectMultiple: =false
+                Size: =21
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey61.Y + DataCardKey61.Height + 5
+                ZIndex: =2
+
+            ErrorMessage5 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue61.Y + DataCardValue61.Height
+                ZIndex: =3
+
+            StarVisible5 As label:
+                Align: =Align.Center
+                Height: =DataCardKey61.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey61.Y
+                ZIndex: =4
+
+        "'Is your short term goal doable?  Consider how this goal ranks among your other priorities, and whether it fits in with the other commitments on your schedule._DataCard2' As typedDataCard.comboBoxViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Is_x0020_your_x0020_short_x0020_"
+            Default: =ThisItem.'Is your short term goal doable?  Consider how this goal ranks among your other priorities, and whether it fits in with the other commitments on your schedule.'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="Is your short term goal doable?  Consider how this goal ranks among your other priorities, and whether it fits in with the other commitments on your schedule."
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue62.Selected
+            Width: =640
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey62 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue62 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                Items: =Choices([@ShortTermGoals].'Is your short term goal doable?  Consider how this goal ranks among your other priorities, and whether it fits in with the other commitments on your schedule.')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices(ShortTermGoals.'Is your short term goal doable?  Consider how this goal ranks among your other priorities, and whether it fits in with the other commitments on your schedule.',DataCardValue62.SearchText)
+                SelectMultiple: =false
+                Size: =21
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey62.Y + DataCardKey62.Height + 5
+                ZIndex: =2
+
+            ErrorMessage6 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue62.Y + DataCardValue62.Height
+                ZIndex: =3
+
+            StarVisible6 As label:
+                Align: =Align.Center
+                Height: =DataCardKey62.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey62.Y
+                ZIndex: =4
+
+        "'What obstacle is stopping you from accomplishing your short term goal? Think about what other commitments or priorities could get in the way of reaching this goal._DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="What_x0020_obstacle_x0020_is_x00"
+            Default: =ThisItem.'What obstacle is stopping you from accomplishing your short term goal? Think about what other commitments or priorities could get in the way of reaching this goal.'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What obstacle is stopping you from accomplishing your short term goal? Think about what other commitments or priorities could get in the way of reaching this goal."
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey63 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue63 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey63.Y + DataCardKey63.Height + 5
+                ZIndex: =2
+
+        "'How can you work around this obstacle? What is your backup plan if other factors prevent you from reaching your personal goal? Think creatively about how you can adjust the goal to fit your new circumstances — you don''t have to change it completely!_DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="How_x0020_can_x0020_you_x0020_wo"
+            Default: =ThisItem.'How can you work around this obstacle? What is your backup plan if other factors prevent you from reaching your personal goal? Think creatively about how you can adjust the goal to fit your new circumstances — you don''t have to change it completely!'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="How can you work around this obstacle? What is your backup plan if other factors prevent you from reaching your personal goal? Think creatively about how you can adjust the goal to fit your new circumstances — you don't have to change it completely!"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =7
+            ZIndex: =1
+
+            DataCardKey64 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue64 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey64.Y + DataCardKey64.Height + 5
+                ZIndex: =2
+
+        "'When should you accomplish your short term goal by? Remember to set a deadline that''s reasonable and specific, and write it down in your calendar._DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="When_x0020_should_x0020_you_x002"
+            Default: =ThisItem.'When should you accomplish your short term goal by? Remember to set a deadline that''s reasonable and specific, and write it down in your calendar.'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="When should you accomplish your short term goal by? Remember to set a deadline that's reasonable and specific, and write it down in your calendar."
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =8
+            ZIndex: =1
+
+            DataCardKey65 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue65 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey65.Y + DataCardKey65.Height + 5
+                ZIndex: =2
+
+    Label3 As label:
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Select type of goal:"
+        Width: =560
+        X: =37
+        Y: =110
+        ZIndex: =6
+
+    Dropdown1 As dropdown:
+        Default: =
+        Height: =70
+        Items: =Choices([@ShortTermGoals].'What type of goal is it?')
+        OnChange: =true
+        OnSelect: =true
+        Size: =21
+        Width: =575
+        X: =37
+        Y: =180
+        ZIndex: =7
+

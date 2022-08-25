@@ -1,0 +1,166 @@
+"ParticipantPage As screen.'phoneLayout_HeaderAndGallery_ver3.0'":
+
+    RectQuickActionBar4 As rectangle:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =110
+        Width: =640
+        ZIndex: =1
+
+    LblAppName4 As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =88
+        Size: =35
+        Text: ="Participants"
+        Width: =320
+        Wrap: =false
+        X: =132
+        Y: =11
+        ZIndex: =2
+
+    IconRefresh1 As icon.Reload:
+        AccessibleLabel: =IconRefresh1.Tooltip
+        Icon: =Icon.Reload
+        OnSelect: =Refresh(LongTermGoals)
+        TabIndex: =0
+        Tooltip: ="Refresh list"
+        X: =466
+        Y: =23
+        ZIndex: =3
+
+    TextSearchBox1 As text:
+        Align: =Left
+        Default: =
+        Height: =68
+        HintText: ="Search items"
+        PaddingLeft: =70
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =7
+        RadiusTopLeft: =0
+        RadiusTopRight: =7
+        Size: =21
+        Width: =Parent.Width
+        Y: =RectQuickActionBar4.Height
+        ZIndex: =6
+
+    SearchIcon1 As icon.Search:
+        Height: =SearchIcon1.Width
+        Icon: =Icon.Search
+        PaddingBottom: =14
+        PaddingLeft: =14
+        PaddingRight: =14
+        PaddingTop: =14
+        Tooltip: ="Search"
+        Width: =TextSearchBox1.Height
+        X: =TextSearchBox1.X
+        Y: =TextSearchBox1.Y
+        ZIndex: =7
+
+    Rectangle11 As rectangle:
+        Height: =2
+        Width: =Parent.Width
+        Y: =TextSearchBox1.Y + TextSearchBox1.Height
+        ZIndex: =8
+
+    AddParticipant As icon.AddUser:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Add
+        OnSelect: =NewForm(Form4);Navigate(NewParticipant,Fade)
+        Tooltip: ="Add participant"
+        X: =548
+        Y: =23
+        ZIndex: =10
+
+    "Gallery2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =958
+        Items: |
+            =Search(ParticipantsList,TextSearchBox1.Text,"Title","Email")
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Transition: =Transition.Pop
+        Y: =178
+        ZIndex: =18
+
+        Image4 As image:
+            Height: =128
+            Image: =Office365Users.UserPhoto(ThisItem.Email)
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title5 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4.Width - 104
+            X: =Image4.X + Image4.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle4 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Email
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title5.Width
+            X: =Title5.X
+            Y: =Title5.Y + Title5.Height + 4
+            ZIndex: =3
+
+        NextArrow5 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: |-
+                =Set(varParticipantEmail,ThisItem.Email);
+                Navigate(ViewGoals)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =561
+            Y: =56
+            ZIndex: =4
+
+        Separator5 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    Container2 As groupContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =1136
+        Visible: =varAddParticipant
+        Width: =640
+        ZIndex: =19
+
+    HomeButton_2 As button:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =50
+        HoverColor: =RGBA(153, 207, 236, 1)
+        HoverFill: =Self.Color
+        OnSelect: =Navigate(Homepage_staff,ScreenTransition.CoverRight)
+        Size: =24
+        Text: ="Home"
+        Width: =110
+        X: =8
+        Y: =26
+        ZIndex: =20
+

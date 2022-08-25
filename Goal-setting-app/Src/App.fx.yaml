@@ -1,0 +1,24 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |+
+        =Set(varGroupId,"cc89c993-811b-42ad-8d02-8070edf256bc");
+        Set(varFormMode,FormMode.New);
+        Set(
+            varVideoMonth,
+            DateValue(Month(Today()) & "/" & "1" & "/" & Year(Today()))
+        );
+        Set(
+            varVideoFirstDayView,
+            DateAdd(
+                varVideoMonth,
+                -Weekday(varVideoMonth),
+                Days
+            )
+        );
+        Set(varVideoFirstDayNextMonth, DateAdd(DateAdd(varVideoMonth,1,Months),7-Weekday(DateAdd(varVideoMonth,1,Months)),Days));
+        ClearCollect(NewFolks, {Email:"appworks@thaddeus.org"});
+        Set(_CurrentDate, Today());
+        
+    StartScreen: |
+        =
+

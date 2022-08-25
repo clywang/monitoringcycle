@@ -1,0 +1,403 @@
+LongTermForm_view As screen:
+
+    RectQuickActionBar4_4 As rectangle:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =110
+        Width: =640
+        ZIndex: =1
+
+    BackButton2_7 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.CoverRight);
+        X: =25
+        Y: =23
+        ZIndex: =2
+
+    Icon1 As icon.Edit:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Edit
+        OnSelect: =Navigate(LongTermForm)
+        X: =548
+        Y: =23
+        ZIndex: =3
+
+    FormViewer2 As formViewer:
+        AcceptsFocus: =false
+        DataSource: =LongTermGoals
+        Height: =1026
+        Item: =LookUp(LongTermGoals,Email=varParticipantEmail)
+        NumberOfColumns: =1
+        Width: =640
+        Y: =110
+        ZIndex: =4
+
+        "'What is your long term education goal ?  eg. graduation, accomplishing a degree/program/license._DataCard4' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermeducationgoal_"
+            Default: =ThisItem.'What is your long term education goal ?  eg. graduation, accomplishing a degree/program/license.'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term education goal ?  eg. graduation, accomplishing a degree/program/license."
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey25 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue25 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey25.Y + DataCardKey25.Height + 5
+                ZIndex: =2
+
+        "'What is your long term career goal?  eg. promotion at your current job, getting a full-time job in your desired career goal. _DataCard4' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermcareergoal_x00"
+            Default: =ThisItem.'What is your long term career goal?  eg. promotion at your current job, getting a full-time job in your desired career goal. '
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term career goal?  eg. promotion at your current job, getting a full-time job in your desired career goal. "
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey48 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue48 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey48.Y + DataCardKey48.Height + 5
+                ZIndex: =2
+
+        "'What is your long term financial goal?  eg. save up 15% of your total income, being financially independent. _DataCard3' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermfinancialgoal_"
+            Default: =ThisItem.'What is your long term financial goal?  eg. save up 15% of your total income, being financially independent. '
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term financial goal?  eg. save up 15% of your total income, being financially independent. "
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey49 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue49 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey49.Y + DataCardKey49.Height + 5
+                ZIndex: =2
+
+        "'What is your long term health goal?  eg. recovering from an injury, having a healthier diet_DataCard3' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermhealthgoal_x00"
+            Default: =ThisItem.'What is your long term health goal?  eg. recovering from an injury, having a healthier diet'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term health goal?  eg. recovering from an injury, having a healthier diet"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey50 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue50 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey50.Y + DataCardKey50.Height + 5
+                ZIndex: =2
+
+        "'What is your long term family/friends relationship goal ? eg. reconnecting with family members, makes good friends_DataCard4' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermfamily_x002f_f"
+            Default: =ThisItem.'What is your long term family/friends/relationship goal ? eg. reconnecting with family members, makes good friends'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term family/friends relationship goal ? eg. reconnecting with family members, makes good friends"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey51 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue51 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey51.Y + DataCardKey51.Height + 5
+                ZIndex: =2
+
+        "'What is your long term accountability goal? eg. being punctual for your school/work_DataCard3' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermaccountability"
+            Default: =ThisItem.'What is your long term accountability goal? eg. being punctual for your school/work'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term accountability goal? eg. being punctual for your school/work"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey52 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue52 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey52.Y + DataCardKey52.Height + 5
+                ZIndex: =2
+
+        "'What is your long term personal goal?  eg. new hobbies, new language, building confidence_DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyourlongtermpersonalgoal_x"
+            Default: =ThisItem.'What is your long term personal goal?  eg. new hobbies, new language, building confidence'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your long term personal goal?  eg. new hobbies, new language, building confidence"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey53 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue53 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey53.Y + DataCardKey53.Height + 5
+                ZIndex: =2
+
+        "'Is your long term goal is SMART goal?  Specific  Measurable Attainable  Relevant Time-bound_DataCard1' As typedDataCard.toggleViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="IsyourlongtermgoalisSMARTgoal_x0"
+            Default: =ThisItem.'Is your long term goal is SMART goal?  Specific  Measurable Attainable  Relevant Time-bound'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="Is your long term goal is SMART goal?  Specific  Measurable Attainable  Relevant Time-bound"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =7
+            ZIndex: =1
+
+            DataCardKey54 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue54 As toggleSwitch:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                Height: =49
+                Size: =21
+                Width: =154
+                X: =30
+                Y: =DataCardKey54.Y + DataCardKey54.Height + 5
+                ZIndex: =2
+
+        "'What obstacle is stopping you from accomplishing your long term goal?_DataCard1' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatobstacleisstoppingyoufromacc"
+            Default: =ThisItem.'What obstacle is stopping you from accomplishing your long term goal?'
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What obstacle is stopping you from accomplishing your long term goal?"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            WidthFit: =false
+            X: =0
+            Y: =8
+            ZIndex: =1
+
+            DataCardKey55 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue55 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey55.Y + DataCardKey55.Height + 5
+                ZIndex: =2
+
+        "'What is your alternative plan/option if there is something comes along the way? _DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Whatisyouralternativeplan_x002f_"
+            Default: =ThisItem.'What is your alternative plan/option if there is something comes along the way? '
+            DisplayMode: =DisplayMode.View
+            DisplayName: ="What is your alternative plan/option if there is something comes along the way? "
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =640
+            X: =0
+            Y: =9
+            ZIndex: =1
+
+            DataCardKey56 As label:
+                AutoHeight: =true
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue56 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey56.Y + DataCardKey56.Height + 5
+                ZIndex: =2
+

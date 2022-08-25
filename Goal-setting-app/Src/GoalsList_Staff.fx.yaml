@@ -1,0 +1,114 @@
+GoalsList_Staff As screen:
+
+    RectQuickActionBar4_3 As rectangle:
+        Fill: =RGBA(153, 207, 236, 1)
+        Height: =110
+        Width: =640
+        ZIndex: =1
+
+    Gallery5_1 As gallery.galleryVertical:
+        Height: =1026
+        Items: =LookUp(LongTermGoals,Email = varParticipantEmail)
+        Layout: =Layout.Vertical
+        TemplateSize: =1021
+        Y: =110
+        ZIndex: =1
+
+        Label8_7 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =
+            Size: =21
+            Text: |-
+                ="Long Term Goal #1
+                " & ThisItem.'What is your long term education goal ?  eg. graduation, accomplishing a degree/program/license.'
+            Width: =560
+            X: =45
+            ZIndex: =1
+
+        Label8_8 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                ="Long Term Goal #3
+                " & ThisItem.'What is your long term financial goal?  eg. save up 15% of your total income, being financially independent. '
+            Width: =560
+            X: =45
+            Y: =292
+            ZIndex: =2
+
+        Label8_9 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                ="Long Term Goal #2
+                " & ThisItem.'What is your long term career goal?  eg. promotion at your current job, getting a full-time job in your desired career goal. '
+            Width: =560
+            X: =45
+            Y: =146
+            ZIndex: =3
+
+        Label8_10 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                ="Long Term Goal #5
+                " & ThisItem.'What is your long term family/friends/relationship goal ? eg. reconnecting with family members, makes good friends'
+            Width: =560
+            X: =45
+            Y: =584
+            ZIndex: =4
+
+        Label8_11 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                ="Long Term Goal #4
+                " & ThisItem.'What is your long term health goal?  eg. recovering from an injury, having a healthier diet'
+            Width: =560
+            X: =45
+            Y: =438
+            ZIndex: =5
+
+        Label8_12 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                ="Long Term Goal #6
+                " & ThisItem.'What is your long term accountability goal? eg. being punctual for your school/work'
+            Width: =560
+            X: =45
+            Y: =730
+            ZIndex: =6
+
+        Label8_13 As label:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =120
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                ="Long Term Goal #7
+                " & ThisItem.'What is your long term personal goal?  eg. new hobbies, new language, building confidence'
+            Width: =560
+            X: =45
+            Y: =875
+            ZIndex: =7
+
+    BackButton2_6 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back(ScreenTransition.CoverRight);
+        X: =25
+        Y: =23
+        ZIndex: =2
+
